@@ -1,0 +1,98 @@
+<h2>Test: User</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <button id="api-user-get-btn" class="api-btn">GET</button>
+      </td>
+      <td id="api-user-get-result">GET</td>
+    </tr>
+    <tr>
+      <td>
+        <button id="api-user-post-btn" class="api-btn">POST</button>
+      </td>
+      <td id="api-user-post-result">POST</td>
+    </tr>
+    <tr>
+      <td>
+        <button id="api-user-put-btn" class="api-btn">PUT</button>
+      </td>
+      <td id="api-user-put-result">PUT</td>
+    </tr>
+    <tr>
+      <td>
+        <button id="api-user-patch-btn" class="api-btn">PATCH</button>
+      </td>
+      <td id="api-user-patch-result">PATCH</td>
+    </tr>
+    <tr>
+      <td>
+        <button id="api-user-delete-btn" class="api-btn">DELETE</button>
+      </td>
+      <td id="api-user-delete-result">DELETE</td>
+    </tr>
+    <tr>
+      <td>
+        <button id="api-discount-get-btn" class="api-btn">Discount GET</button>
+      </td>
+      <td id="api-discount-get-result">Discount GET</td>
+    </tr>
+    <tr>
+      <td>
+        <button id="api-discount-post-btn" class="api-btn">Discount POST</button>
+      </td>
+      <td id="api-discount-post-result">Discount POST</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Tests for invalid data:</h2>
+<table>
+  <tr>
+    <td>
+      <button data-api-name="user" data-api-method="get" data-test-name="correctAuth" class="api-btn">
+        Correct Authorization header
+      </button>
+    </td>
+    <td class="api-user-get-result">User GET</td>
+  </tr>
+  <tr>
+    <td>
+      <button data-api-name="user" data-api-method="get" data-test-name="noAuth" class="api-btn">
+        Invalid Authorization header
+      </button>
+    </td>
+    <td class="api-user-get-result">User GET</td>
+  </tr>
+  <tr>
+    <td>
+      <button data-api-name="user" data-api-method="get" data-test-name="invalidAuthScheme" class="api-btn">
+        Invalid Authorization scheme
+      </button>
+    </td>
+    <td class="api-user-get-result">User GET</td>
+  </tr>
+  <tr>
+    <td>
+      <button data-api-name="user" data-api-method="get" data-test-name="shortAuthData" class="api-btn">
+        Short Authorization data
+      </button>
+    </td>
+    <td class="api-user-get-result">User GET</td>
+  </tr>
+  <tr>
+    <td>
+      <button data-api-name="user" data-api-method="get" data-test-name="invalidBase64" class="api-btn">
+        Invalid Base64
+      </button>
+    </td>
+    <td class="api-user-get-result">User GET</td>
+  </tr>
+</table>
