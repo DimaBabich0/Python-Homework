@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "cache": 300,
+    "uri": "https://my-site.loc/items",
+    "receivedVariables": {
+      "page": 2,
+      "perPage": 10,
+      "sort": "created_at:desc",
+      "filter": {
+        "status": "active"
+      }
+    },
+    "pagination": {
+      "page": 2,
+      "perPage": 10,
+      "returnedItems": 10,
+      "totalItems": 87,
+      "totalPages": 9,
+      "hasNextPage": true,
+      "hasPrevPage": true
+    },
+    "manipulations": {
+      "read": "GET /items",
+      "readOne": "GET /items/{id}",
+      "write": "POST /items",
+      "update": "PUT /items/{id}",
+      "partialUpdate": "PATCH /items/{id}",
+      "delete": "DELETE /items/{id}"
+    },
+    "links": {
+      "self": "/items?page=2&perPage=10",
+      "first": "/items?page=1&perPage=10",
+      "last": "/items?page=9&perPage=10",
+      "next": "/items?page=3&perPage=10",
+      "prev": "/items?page=1&perPage=10",
+      "item": "/items/{id}",
+      "search": "/items/search?q={fragment}"
+    },
+    "dataType": "array",
+    "dataModel": [
+      {
+        "fieldName": "id",
+        "fieldType": "integer",
+        "fieldDescription": "Unique identifier of item"
+      },
+      {
+        "fieldName": "title",
+        "fieldType": "string",
+        "fieldMaxSize": 256,
+        "fieldDescription": "Name of item by producer"
+      },
+      {
+        "fieldName": "status",
+        "fieldType": "string",
+        "allowedValues": ["active", "inactive", "archived"],
+        "fieldDescription": "Current item status"
+      },
+      {
+        "fieldName": "created_at",
+        "fieldType": "datetime",
+        "fieldDescription": "Item creation timestamp"
+      }
+    ]
+  },
+  "data": [
+    { "id": 21, "title": "Item 21", "status": "active", "created_at": "2026-02-20T12:30:00Z" },
+    { "id": 22, "title": "Item 22", "status": "active", "created_at": "2026-02-20T12:29:00Z" },
+    { "id": 23, "title": "Item 23", "status": "active", "created_at": "2026-02-20T12:28:00Z" },
+    { "id": 24, "title": "Item 24", "status": "active", "created_at": "2026-02-20T12:27:00Z" },
+    { "id": 25, "title": "Item 25", "status": "active", "created_at": "2026-02-20T12:26:00Z" },
+    { "id": 26, "title": "Item 26", "status": "active", "created_at": "2026-02-20T12:25:00Z" },
+    { "id": 27, "title": "Item 27", "status": "active", "created_at": "2026-02-20T12:24:00Z" },
+    { "id": 28, "title": "Item 28", "status": "active", "created_at": "2026-02-20T12:23:00Z" },
+    { "id": 29, "title": "Item 29", "status": "active", "created_at": "2026-02-20T12:22:00Z" },
+    { "id": 30, "title": "Item 30", "status": "active", "created_at": "2026-02-20T12:21:00Z" }
+  ]
+}
