@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Intro</title>
+</head>
+<body>
+  <h1>Знакомство с фреймворком Django</h1>
+  <p>Это простая HTML страница для демонстрации работы сайта.</p>
+  <p><a href="{% url 'intro' %}">Перейти на страницу Intro</a></p>
+  <hr/>
+  <h2>Переменные шаблона</h2>
+  <p>Для отображения значения переменных используются: &#x7B;&#x7B; имя переменной &#x7D;&#x7D;</p>
+  <p>Значение x: {{ x }}</p>
+  <p>Строка: {{ str }}</p>
+  <p>Список: {{ list }}</p>
+  <p>Словарь: {{ dict }}</p>
+  <p>Bool: {{ bool }}</p>
+  <p>None: {{ none }}</p>
+</body>
+</html>
