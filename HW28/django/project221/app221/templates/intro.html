@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Intro{% endblock %}
+
+{% block render_body %}
+  <div class="row mb-5">
+    <div class="col-lg-10 offset-lg-1">
+      <h1 class="display-6 fw-bold mb-4">
+        <i class="bi bi-info-circle text-info me-2"></i>Информация о Django
+      </h1>
+
+      <div class="card shadow-sm mb-4 border-0">
+        <div class="card-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <p class="text-muted small mb-1">Версия Django</p>
+              <p class="h5 fw-bold text-primary">{{ django_version }}</p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-muted small mb-1">Страница загружена</p>
+              <p class="h5 fw-bold text-primary">
+                <i class="bi bi-clock me-1"></i>{{ load_time }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-group list-group-flush">
+        <div class="list-group-item border-start-0 border-end-0 px-0">
+          <p class="text-muted small mb-2 m-2"><i class="bi bi-download text-success me-2"></i>Установка Django</p>
+          <code class="bg-light p-2 d-block rounded m-2">pip install django</code>
+        </div>
+        <div class="list-group-item border-start-0 border-end-0 px-0">
+          <p class="text-muted small mb-2 m-2"><i class="bi bi-plus-circle text-success me-2"></i>Создание нового проекта</p>
+          <code class="bg-light p-2 d-block rounded m-2">django-admin startproject projectname</code>
+        </div>
+        <div class="list-group-item border-start-0 border-end-0 px-0">
+          <p class="text-muted small mb-2 m-2"><i class="bi bi-play-circle text-success me-2"></i>Запуск сервера разработки</p>
+          <code class="bg-light p-2 d-block rounded m-2">python manage.py runserver</code>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
