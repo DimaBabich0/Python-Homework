@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block render_body %}
+  <div class="row mb-5">
+    <div class="col-lg-8">
+      <h1 class="display-5 fw-bold mb-4">
+        <i class="bi bi-house text-primary me-2"></i>Знакомство с фреймворком Django
+      </h1>
+      <p class="lead text-muted">Это простая HTML страница для демонстрации работы сайта.</p>
+      <p>
+        <a href="{% url 'intro' %}" class="btn btn-primary btn-sm">
+          <i class="bi bi-arrow-right me-1"></i>Перейти на страницу Intro
+        </a>
+      </p>
+      <p>
+        <a href="{% url 'forms' %}" class="btn btn-primary btn-sm">
+          <i class="bi bi-file-bar-graph me-1"></i>Перейти на страницу Forms
+        </a>
+      </p>
+    </div>
+    <div class="col-lg-4 text-center">
+      <img src="{% static 'img/cat.png' %}" alt="Cat" class="img-fluid rounded shadow-sm" style="max-width: 300px;"/>
+    </div>
+  </div>
+{% endblock %}
