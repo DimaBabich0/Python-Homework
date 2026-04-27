@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Forms{% endblock %}
+
+{% block render_body %}
+  <h1 class="display-5">Передача данных: параметры и формы</h1>
+  <p class="m-0">
+    Передача данных, обычно, происходит двумя традиционными способами:
+  </p>
+  <ul>
+    <li>
+      через URL-параметров (GET-параметры или Query)
+    </li>
+    <li>
+      через формы (POST-запросы)
+  </ul>
+
+  <h2>URL-параметры:</h2>
+  <p>
+    x = <input id="query-data" value="{{x}}"/> <input id="query-button" type="button" value="Send" />
+  </p>
+  <p>
+    Полный GET: {{get}}, отдельный X: {{x}}
+  </p>
+  <p class="alert alert-primary" role="alert">
+    В URL-параметрах не стоит забывать про кодирование, например "2+2" будет передано как "2 2". Так что необходимо использовать encodeURIComponent в скрипте для кодирования данных перед отправкой.
+  </p>
+
+  <h2>POST-формы:</h2>
+  <p class="m-0">
+    Формы задаются специальными классами (потомками Form) с декларативным описанием структуры полей. Конструктор класса вызывается при формирование контекста шаблона, результат может быть подан в одном из заложенных стилей:
+    <ul>
+      <li>as_div</li>
+      <li>as_p</li>
+      <li>as_ul</li>
+      <li>as_table</li>
+    </ul>
+    Следует также обратить внимание на то, что ни формы, ни тег окружения (ul или table) не формируется соответствующими инструкциями. Также если форма передается через POST, то необходимо добавлять {&percnt; csrf_token &percnt;} для защиты от CSRF-атак.
+  </p>
+
+  <div class="row">
+    <div class="col">
+      <h3>Default</h3>
+      {{ demo_form }}
+    </div>
+
+    <div class="col">
+      <h3>as_div</h3>
+      {{ demo_form.as_div }}
+    </div>
+
+    <div class="col">
+      <h3>as_p</h3>
+      {{ demo_form.as_p }}
+    </div>
+
+    <div class="col">
+      <h3>as_ul</h3>
+      <ul>
+        {{ demo_form.as_ul }}
+      </ul>
+    </div>
+
+    <div class="col">
+      <h3>as_table</h3>
+      <table>
+        {{ demo_form.as_table }}
+      </table>
+    </div>
+  </div>
+  
+  <hr>
+
+  <h3>Работающая POST-форма:</h3>
+  <form method="post" class="border p-2">
+    {% csrf_token %}
+    {{demo_form}}
+    <input type="submit" value="Send" />
+  </form>
+
+  <hr>
+
+  <h2>Стилизация формы</h2>
+  <form method="post" class="border p-2">
+    {% csrf_token %}
+
+    <!-- First Name -->
+    <div class="input-group mb-3">
+      <label for="{{demo_form.first_name.id_for_label}}-styled" class="input-group-text"
+        id="{{demo_form.first_name.id_for_label}}-addon1"
+      >
+        <i class="bi bi-person-square"></i>
+      </label>
+      <input type="text" class="form-control {{ demo_form.first_name.errors | yesno:'is-invalid, , '}}"
+        name="{{demo_form.first_name.html_name}}"
+        value="{{demo_form.first_name.value | default_if_none:'' }}"
+        id="{{demo_form.first_name.id_for_label}}-styled"
+        placeholder="{{demo_form.first_name.label}}"
+        aria-label="{{demo_form.first_name.label}}"
+        aria-describedby="basic-addon1"
+      >
+      {% if 'first_name' in demo_form.errors %}
+        <div class="invalid-feedback">
+          {{demo_form.first_name.errors.as_text}}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Last Name -->
+    <div class="input-group mb-3">
+      <label for="{{demo_form.last_name.id_for_label}}-styled" class="input-group-text"
+        id="{{demo_form.last_name.id_for_label}}-addon1"
+      >
+        <i class="bi bi-person-vcard"></i>
+      </label>
+      <input type="text" class="form-control {{ demo_form.last_name.errors | yesno:'is-invalid, , '}}"
+        name="{{demo_form.last_name.html_name}}"
+        value="{{demo_form.last_name.value | default_if_none:'' }}"
+        id="{{demo_form.last_name.id_for_label}}-styled"
+        placeholder="{{demo_form.last_name.label}}"
+        aria-label="{{demo_form.last_name.label}}"
+        aria-describedby="basic-addon1"
+      >
+      {% if 'last_name' in demo_form.errors %}
+        <div class="invalid-feedback">
+          {{demo_form.last_name.errors.as_text}}
+        </div>
+      {% endif %}
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Send">
+  </form>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Models{% endblock %}
+
+{% block render_body %}
+  <h1 class="display-3">Модели. Взаимодействие с БД</h1>
+  <p>Модели (с процесса моделирования) - редуцированные представления реальных объектов с остатком только необходимых для проекта характеристик.</p>
+  <p>Модель (с MVC-like паттернов) - часть архитектуры проекта, которая отвечает за взаимодействие с поставщиками данных. Обычно, в образе объектов-моделей.</p>
+  <p>В Django модели - классы, что описывают данные, которые передаются в БД.</p>
+  <ul>
+    <li>
+      Модели объявляются в файле <code>models.py</code>, который является частью базового проекта
+    </li>
+    <li>
+      После объявления моделей, необходимо выполнить миграцию:<br>
+      <code>python manage.py makemigrations</code><br>
+    </li>
+    <li>
+      Выполняем созданную миграцию:<br>
+      <code>python manage.py migrate</code><br>
+    </li>
+  </ul>
+  <p>Панель администратора также входит в состав базового проекта и позволяет взаимодействовать с БД.</p>
+  <ul>
+    <li>
+      Создаем пользователя-администратора (суперпользователь):<br>
+      <code>python manage.py createsuperuser</code><br>
+    </li>
+    <li>
+      Запускаем сервер и переходим по адресу: <a href="/admin/">/admin/</a>
+    </li>
+    <li>
+      Модели, даже после миграции, не попадают автоматически в панель администратора. Для включения их необходимо зарегистировать в файле <code>admin.py</code>:<br>
+      <code>from .models import *<br>
+      admin.site.register(Client)</code><br>
+      Обновляем сайт-админку, создаем через него нового клиента, и проверяем его отображение в БД:<br>
+      <img src="{% static 'img/admin01.jpg' %}" alt="models" class="img-thumbnail">
+    </li>
+    <li>
+      Для улучшения отображения создаем админ-модель и регистрируем ее соотношение с моделью данных в файле <code>admin.py</code>:<br>
+      <code>class ClientAdmin(admin.ModelAdmin):
+      list_display = ('id', 'first_name', 'last_name', 'register_at')<br>
+      admin.site.register(Client, ClientAdmin)</code><br>
+      Проверяем отображение в админке:<br>
+      <img src="{% static 'img/admin02.jpg' %}" alt="models" class="img-thumbnail">
+    </li>
+  </ul>
+  <p></p>
+{% endblock %}
